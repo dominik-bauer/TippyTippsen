@@ -1,13 +1,12 @@
+from pprint import pprint
 import os
 from datetime import datetime
-from time import sleep
 from typing import Deque
 from collections import deque
-
+import pandas as pd
 import dotenv
 from requests import Response, get
-import requests
-
+from renderer import df_to_png
 from constants import TIPPS, TEAMS, BL
 
 dotenv.load_dotenv()
@@ -94,6 +93,10 @@ def build_players() -> list[Player]:
     return players
 
 
+def split_back(l: list) -> tuple[list, list, list]:
+    return l[:18], l[18:36], l[36:]
+
+
 def diff2points(diff: int) -> int:
     # fmt: off
     if diff == 0:  return 3
@@ -101,6 +104,37 @@ def diff2points(diff: int) -> int:
     if diff == 2:  return 1
     return 0
     # fmt: on
+
+
+def generate_ranking(players: list[Player]) -> list[str]:
+    columns = [
+        "Platzierung",
+        "Name",
+        "Total",
+        "1. Bundesliga",
+        "2. Bundesliga",
+        "3. Bundesliga",
+    ]
+
+    rows = []
+    for player in players:
+
+        bl1, bl2, bl3 = split_back(player.points)
+        p1, p2, p3 = sum(bl1), sum(bl2), sum(bl3)
+        pt = p1 + p2 + p3
+        row = [player.name, pt, p1, p2, p3]
+        rows.append(pd.DataFrame(data=[row], columns=columns))
+
+    df = pd.concat(rows)
+    df.sort_values(
+        by=["Total", "1. Bundesliga", "2. Bundesliga", "3. Bundesliga"],
+        ascending=False,
+        inplace=True,
+    )
+    df.reset_index(drop=True, inplace=True)
+    df.index += 1
+
+    return df
 
 
 @dataclass
@@ -154,19 +188,18 @@ def main():
     # build players first
     players = build_players()
 
-    print("This are the players: ")
-    for p in players:
-        print(p.name, p.threema_id, p.threema_public_key, p.tipps)
-
     state_current = LeagueState()
 
     for player in players:
         player.update_points(state_current)
-        print(
-            f"{player.name} has {sum(player.points)} points. Based on data from: {player.points_date}"
-        )
+        print(f"{player.name} has {sum(player.points)} points.")
+    print(f"As of {state_current.date:%Y-%m-%d %H:%M}")
+
+    table_ranking = generate_ranking(players)
+    print(table_ranking.values.tolist())
+
+    df_to_png(table_ranking, "test1.png")
 
 
 if __name__ == "__main__":
     main()
-    # https://github.com/dominik-bauer/TippyTippsen.git
