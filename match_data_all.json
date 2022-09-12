@@ -1,0 +1,766 @@
+[
+    {
+        "MatchID": 63892,
+        "MatchDateTime": "2022-08-26T20:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-26T18:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 112,
+            "TeamName": "SC Freiburg",
+            "ShortName": "Freiburg",
+            "TeamIconUrl": "https://i.imgur.com/r3mvi0h.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 129,
+            "TeamName": "VfL Bochum",
+            "ShortName": "Bochum",
+            "TeamIconUrl": "https://i.imgur.com/5jy3Gfr.png",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-26T22:39:25.267",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98691,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 1,
+                "PointsTeam2": 0,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98692,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 0,
+                "PointsTeam2": 0,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [
+            {
+                "GoalID": 95475,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 0,
+                "MatchMinute": 48,
+                "GoalGetterID": 16133,
+                "GoalGetterName": "Vincenzo Grifo",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            }
+        ],
+        "Location": null,
+        "NumberOfViewers": null
+    },
+    {
+        "MatchID": 63893,
+        "MatchDateTime": "2022-08-27T15:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-27T13:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 54,
+            "TeamName": "Hertha BSC",
+            "ShortName": "Hertha",
+            "TeamIconUrl": "https://i.imgur.com/apFwbYZ.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 7,
+            "TeamName": "Borussia Dortmund",
+            "ShortName": "BVB",
+            "TeamIconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/560px-Borussia_Dortmund_logo.svg.png",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-27T17:25:54.2",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98699,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 0,
+                "PointsTeam2": 1,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98700,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 0,
+                "PointsTeam2": 1,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [
+            {
+                "GoalID": 95491,
+                "ScoreTeam1": 0,
+                "ScoreTeam2": 1,
+                "MatchMinute": 32,
+                "GoalGetterID": 18347,
+                "GoalGetterName": "A. Modeste",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            }
+        ],
+        "Location": null,
+        "NumberOfViewers": null
+    },
+    {
+        "MatchID": 63894,
+        "MatchDateTime": "2022-08-27T15:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-27T13:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 175,
+            "TeamName": "TSG 1899 Hoffenheim",
+            "ShortName": "Hoffenheim",
+            "TeamIconUrl": "https://i.imgur.com/gF0PfEl.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 95,
+            "TeamName": "FC Augsburg",
+            "ShortName": "Augsburg",
+            "TeamIconUrl": "https://i.imgur.com/sdE62e2.png",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-27T17:25:53.107",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98701,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 1,
+                "PointsTeam2": 0,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98702,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 1,
+                "PointsTeam2": 0,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [
+            {
+                "GoalID": 95493,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 0,
+                "MatchMinute": 39,
+                "GoalGetterID": 19108,
+                "GoalGetterName": "D. Geiger",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            }
+        ],
+        "Location": null,
+        "NumberOfViewers": null
+    },
+    {
+        "MatchID": 63896,
+        "MatchDateTime": "2022-08-27T15:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-27T13:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 81,
+            "TeamName": "1. FSV Mainz 05",
+            "ShortName": "Mainz",
+            "TeamIconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Logo_Mainz_05.svg/1200px-Logo_Mainz_05.svg.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 6,
+            "TeamName": "Bayer Leverkusen",
+            "ShortName": "Leverkusen",
+            "TeamIconUrl": "https://upload.wikimedia.org/wikipedia/de/thumb/f/f7/Bayer_Leverkusen_Logo.svg/1200px-Bayer_Leverkusen_Logo.svg.png",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-27T17:25:52.14",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98707,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 0,
+                "PointsTeam2": 3,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98708,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 0,
+                "PointsTeam2": 3,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [
+            {
+                "GoalID": 95489,
+                "ScoreTeam1": 0,
+                "ScoreTeam2": 1,
+                "MatchMinute": 29,
+                "GoalGetterID": 19318,
+                "GoalGetterName": "E. Palacios",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95494,
+                "ScoreTeam1": 0,
+                "ScoreTeam2": 2,
+                "MatchMinute": 39,
+                "GoalGetterID": 19129,
+                "GoalGetterName": "J. Frimpong",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95495,
+                "ScoreTeam1": 0,
+                "ScoreTeam2": 3,
+                "MatchMinute": 41,
+                "GoalGetterID": 19129,
+                "GoalGetterName": "J. Frimpong",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            }
+        ],
+        "Location": null,
+        "NumberOfViewers": null
+    },
+    {
+        "MatchID": 63897,
+        "MatchDateTime": "2022-08-27T15:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-27T13:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 1635,
+            "TeamName": "RB Leipzig",
+            "ShortName": "Leipzig",
+            "TeamIconUrl": "https://i.imgur.com/Rpwsjz1.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 131,
+            "TeamName": "VfL Wolfsburg",
+            "ShortName": "Wolfsburg",
+            "TeamIconUrl": "https://i.imgur.com/ucqKV4B.png",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-27T17:25:50.653",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98703,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 2,
+                "PointsTeam2": 0,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98704,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 1,
+                "PointsTeam2": 0,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [
+            {
+                "GoalID": 95487,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 0,
+                "MatchMinute": 4,
+                "GoalGetterID": 18782,
+                "GoalGetterName": "C. Nkunku",
+                "IsPenalty": true,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": "Handelfmeter"
+            },
+            {
+                "GoalID": 95499,
+                "ScoreTeam1": 2,
+                "ScoreTeam2": 0,
+                "MatchMinute": 90,
+                "GoalGetterID": 18782,
+                "GoalGetterName": "C. Nkunku",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            }
+        ],
+        "Location": null,
+        "NumberOfViewers": null
+    },
+    {
+        "MatchID": 63898,
+        "MatchDateTime": "2022-08-27T15:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-27T13:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 9,
+            "TeamName": "FC Schalke 04",
+            "ShortName": "Schalke",
+            "TeamIconUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/FC_Schalke_04_Logo.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 80,
+            "TeamName": "1. FC Union Berlin",
+            "ShortName": "Union Berlin",
+            "TeamIconUrl": "https://assets.dfb.de/uploads/000/018/232/small_union-Berlin.jpg?1493059542",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-27T17:25:49.843",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98705,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 1,
+                "PointsTeam2": 6,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98706,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 1,
+                "PointsTeam2": 3,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [
+            {
+                "GoalID": 95488,
+                "ScoreTeam1": 0,
+                "ScoreTeam2": 1,
+                "MatchMinute": 6,
+                "GoalGetterID": 19484,
+                "GoalGetterName": "M. Thorsby",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95490,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 1,
+                "MatchMinute": 31,
+                "GoalGetterID": 18968,
+                "GoalGetterName": "M. Bülter",
+                "IsPenalty": true,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95492,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 2,
+                "MatchMinute": 37,
+                "GoalGetterID": 18409,
+                "GoalGetterName": "S. Becker",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95496,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 3,
+                "MatchMinute": 45,
+                "GoalGetterID": 19204,
+                "GoalGetterName": "J. Haberer",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": true,
+                "Comment": null
+            },
+            {
+                "GoalID": 95497,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 4,
+                "MatchMinute": 46,
+                "GoalGetterID": 18409,
+                "GoalGetterName": "S. Becker",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95498,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 5,
+                "MatchMinute": 87,
+                "GoalGetterID": 14997,
+                "GoalGetterName": "S. Michel",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95500,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 6,
+                "MatchMinute": 90,
+                "GoalGetterID": 14997,
+                "GoalGetterName": "S. Michel",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            }
+        ],
+        "Location": null,
+        "NumberOfViewers": null
+    },
+    {
+        "MatchID": 63891,
+        "MatchDateTime": "2022-08-27T18:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-27T16:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 40,
+            "TeamName": "FC Bayern München",
+            "ShortName": "Bayern",
+            "TeamIconUrl": "https://i.imgur.com/jJEsJrj.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 87,
+            "TeamName": "Borussia Mönchengladbach",
+            "ShortName": "Gladbach",
+            "TeamIconUrl": "https://i.imgur.com/KSIk0Eu.png",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-27T20:27:25.64",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98709,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 1,
+                "PointsTeam2": 1,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98710,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 0,
+                "PointsTeam2": 1,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [
+            {
+                "GoalID": 95502,
+                "ScoreTeam1": 0,
+                "ScoreTeam2": 1,
+                "MatchMinute": 43,
+                "GoalGetterID": 18573,
+                "GoalGetterName": "M. Thuram",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95503,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 1,
+                "MatchMinute": 83,
+                "GoalGetterID": 18433,
+                "GoalGetterName": "L. Sane",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            }
+        ],
+        "Location": null,
+        "NumberOfViewers": null
+    },
+    {
+        "MatchID": 63895,
+        "MatchDateTime": "2022-08-28T15:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-28T13:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 65,
+            "TeamName": "1. FC Köln",
+            "ShortName": "Köln",
+            "TeamIconUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/FC_Cologne_logo.svg/1200px-FC_Cologne_logo.svg.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 16,
+            "TeamName": "VfB Stuttgart",
+            "ShortName": "Stuttgart",
+            "TeamIconUrl": "https://i.imgur.com/v0tkpNx.png",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-28T17:28:12.477",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98719,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 0,
+                "PointsTeam2": 0,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98720,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 0,
+                "PointsTeam2": 0,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [],
+        "Location": null,
+        "NumberOfViewers": null
+    },
+    {
+        "MatchID": 63899,
+        "MatchDateTime": "2022-08-28T17:30:00",
+        "TimeZoneID": "W. Europe Standard Time",
+        "LeagueId": 4562,
+        "LeagueName": "1. Fußball-Bundesliga 2022/2023",
+        "MatchDateTimeUTC": "2022-08-28T15:30:00Z",
+        "Group": {
+            "GroupName": "4. Spieltag",
+            "GroupOrderID": 4,
+            "GroupID": 39884
+        },
+        "Team1": {
+            "TeamId": 134,
+            "TeamName": "Werder Bremen",
+            "ShortName": "Bremen",
+            "TeamIconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/SV-Werder-Bremen-Logo.svg/681px-SV-Werder-Bremen-Logo.svg.png",
+            "TeamGroupName": null
+        },
+        "Team2": {
+            "TeamId": 91,
+            "TeamName": "Eintracht Frankfurt",
+            "ShortName": "Frankfurt",
+            "TeamIconUrl": "https://i.imgur.com/X8NFkOb.png",
+            "TeamGroupName": null
+        },
+        "LastUpdateDateTime": "2022-08-28T19:27:33.543",
+        "MatchIsFinished": true,
+        "MatchResults": [
+            {
+                "ResultID": 98721,
+                "ResultName": "Endergebnis",
+                "PointsTeam1": 3,
+                "PointsTeam2": 4,
+                "ResultOrderID": 1,
+                "ResultTypeID": 2,
+                "ResultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+            },
+            {
+                "ResultID": 98722,
+                "ResultName": "Halbzeit",
+                "PointsTeam1": 2,
+                "PointsTeam2": 3,
+                "ResultOrderID": 2,
+                "ResultTypeID": 1,
+                "ResultDescription": "Zwischenstand zur Halbzeit"
+            }
+        ],
+        "Goals": [
+            {
+                "GoalID": 95519,
+                "ScoreTeam1": 0,
+                "ScoreTeam2": 1,
+                "MatchMinute": 2,
+                "GoalGetterID": 14306,
+                "GoalGetterName": "Mario Götze",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95520,
+                "ScoreTeam1": 1,
+                "ScoreTeam2": 1,
+                "MatchMinute": 14,
+                "GoalGetterID": 14172,
+                "GoalGetterName": "A. Jung",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95521,
+                "ScoreTeam1": 2,
+                "ScoreTeam2": 1,
+                "MatchMinute": 17,
+                "GoalGetterID": 18523,
+                "GoalGetterName": "L. Bittencourt",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95522,
+                "ScoreTeam1": 2,
+                "ScoreTeam2": 2,
+                "MatchMinute": 32,
+                "GoalGetterID": 19488,
+                "GoalGetterName": "R. Kolo Muani",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95523,
+                "ScoreTeam1": 2,
+                "ScoreTeam2": 3,
+                "MatchMinute": 39,
+                "GoalGetterID": 19157,
+                "GoalGetterName": "J. Lindstrøm",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95524,
+                "ScoreTeam1": 2,
+                "ScoreTeam2": 4,
+                "MatchMinute": 48,
+                "GoalGetterID": 19197,
+                "GoalGetterName": "D. Sow",
+                "IsPenalty": false,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            },
+            {
+                "GoalID": 95525,
+                "ScoreTeam1": 3,
+                "ScoreTeam2": 4,
+                "MatchMinute": 92,
+                "GoalGetterID": 18661,
+                "GoalGetterName": "N. Füllkrug",
+                "IsPenalty": true,
+                "IsOwnGoal": false,
+                "IsOvertime": false,
+                "Comment": null
+            }
+        ],
+        "Location": null,
+        "NumberOfViewers": null
+    }
+]
