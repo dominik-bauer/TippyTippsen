@@ -2,5 +2,5 @@ class ThreemaError(Exception):
     pass
 
 
-class OpenLigaDbError(Exception):
+class ScrapingError(Exception):
     pass
