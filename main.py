@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from pprint import pprint
 from time import sleep
 from game import RankingState, build_players, Match, Matches, generate_ranking
-from renderer import df_to_png
+from renderer import write_points_table_to_png
 from tipps import TEAMS, map_enum_to_list_items
 
 
@@ -40,6 +40,7 @@ def run():
         # check if there are matches scheduled
         if not matches.are_scheduled(today):
             print("There are no matches today. Wait until next day.")
+            #players.send(witz)
             wait_days_until_time(days=1, hh=12, mm=0)  # utc
             continue  # start over
 
@@ -71,7 +72,7 @@ def run():
 
         # wait 5 minutes so that the rankings are hopefully updated
         print("Waiting a few minutes for bundesliga tabellen to update")
-        sleep(5 * 60)
+        sleep(1 * 60)
 
         # get fresh bundesliga tables
         print("Update ranking state")
@@ -88,19 +89,24 @@ def run():
         # render dataframe into png
         print("rendering png")
         fn = f"points_overview_{datetime.now().strftime('%Y%m%d-%H%M%S')}.png"
-        df_to_png(df, fn)
+        header = ["", "", "Total", "1. Bundesliga", "2. Bundesliga", "3. Bundesliga"]
+        write_points_table_to_png(df, fn, header)
 
         # send png to all players
         print("sending messages")
-        players.threema_send(
-            "Hallo und guten Abend. Ich bin Tippy Tippsen und ich schicke dir testweise die Punkteübersicht für das Bundesliga Tippspiel zu. Also du weißt schon das wo du die Bundesliga Tabellen getippt hast..."
-        )
+        players.threema_send("Hallo %name%! Der neue Punktestand ist:", "")
         players.threema_send("", fn)
 
         print("__END FOR TODAY___")
 
+        print("Wait until next day...")
+        wait_days_until_time(days=1, hh=12, mm=0)  # utc
+
 
 if __name__ == "__main__":
+
+    run()
+    exit()
 
     players = build_players()
     state = RankingState()
@@ -112,15 +118,13 @@ if __name__ == "__main__":
     # build point overview dataframe
     print("building dataframe")
     df = generate_ranking(players)
+    print(df)
 
     # render dataframe into png
     print("rendering png")
     fn = f"points_overview_{datetime.now().strftime('%Y%m%d-%H%M%S')}.png"
-    df_to_png(df, fn)
+    write_points_table_to_png(df, fn)
 
     # send png to all players
-    print("sending messages")
-    players.threema_send("", fn)
-
-
-# run()
+    # print("sending messages")
+    # players.threema_send("", fn)

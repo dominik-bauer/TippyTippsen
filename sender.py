@@ -1,5 +1,4 @@
 """ Contains the logic behind sending threema messages"""
-from multiprocessing.sharedctypes import Value
 import dotenv
 import requests
 from subprocess import run, CompletedProcess

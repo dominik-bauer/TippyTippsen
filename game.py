@@ -1,19 +1,15 @@
 import os
+from exceptions import ThreemaError
 from datetime import datetime, timedelta
-from pprint import pprint
+from dataclasses import dataclass, field
 from time import sleep
-from turtle import update
 import pandas as pd
 import dotenv
-from requests import Response, get
-from renderer import df_to_png
 from tipps import TEAMS, TIPPS, map_enum_to_list_items
 from sender import send_message
 import scraper
 
 dotenv.load_dotenv()
-
-from dataclasses import dataclass, field
 
 
 @dataclass
@@ -57,6 +53,10 @@ class Player:
     threema_public_key: str
     tipps: tuple
 
+    send_limit: int = 5
+    send_limit_time: timedelta = timedelta(hours=2)
+    send_log: list[datetime] = field(default_factory=lambda: [])
+
     points: tuple[int] = field(init=False)
     points_date: datetime = field(init=False)
 
@@ -83,12 +83,23 @@ class Player:
         self.points_date = state.date
 
     def send_threema(self, message: str, image_path: str):
-        send_message(
-            self.threema_id,
-            self.threema_public_key,
-            message,
-            image_path,
-        )
+
+        dt_limit: datetime = datetime.utcnow() - self.send_limit_time
+        last_sends: list[datetime] = [dt for dt in self.send_log if dt > dt_limit]
+        if len(last_sends) > self.send_limit:
+            print("Message not send. Limit of messages exceeded...")
+            return
+
+        try:
+            send_message(
+                self.threema_id,
+                self.threema_public_key,
+                message,
+                image_path,
+            )
+            self.send_log.append(datetime.utcnow())
+        except ThreemaError as err:
+            print(err)
 
 
 @dataclass
@@ -108,18 +119,15 @@ class Players:
             p.update_points(state)
 
     def threema_send(self, message, image_path):
+        """Send a threema message to all Players, use %name% as placeholder."""
 
-        # avoid spamming
-        delay = datetime.utcnow() - self.threema_last
-        if delay < self.threema_min_delay:
-            print(
-                f"Messages not send. Delay must be satified: {self.threema_min_delay}<{delay}"
-            )
-            return
-
-        """Send a threema message to all Players"""
         for p in self.players:
-            p.send_threema(message, image_path)
+            if "%name%" in message:
+                msg = message.replace("%name%", p.name)
+            else:
+                msg = message[:]
+
+            p.send_threema(msg, image_path)
             sleep(5)
         self.threema_last = datetime.utcnow()
 
@@ -223,10 +231,9 @@ def get_points(rank_difference: int) -> int:
     # fmt: on
 
 
-def generate_ranking(players: Players):
+def generate_ranking(players: Players) -> pd.DataFrame:
     columns = [
-        "Platzierung",
-        "Name",
+        "Spieler",
         "Total",
         "1. Bundesliga",
         "2. Bundesliga",
@@ -240,7 +247,7 @@ def generate_ranking(players: Players):
         bl1, bl2, bl3 = split_bl123_table_back(player.points)
         p1, p2, p3 = sum(bl1), sum(bl2), sum(bl3)
         pt = p1 + p2 + p3
-        row = ["", player.name, pt, p1, p2, p3]
+        row = [player.name, pt, p1, p2, p3]
         rows.append(pd.DataFrame(data=[row], columns=columns))
 
     df = pd.concat(rows)
@@ -251,5 +258,7 @@ def generate_ranking(players: Players):
     )
     df.reset_index(drop=True, inplace=True)
     df.index += 1
+    df.reset_index(inplace=True)
+    df = df.rename(columns={"index": ""})
 
     return df
