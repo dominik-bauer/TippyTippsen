@@ -27,19 +27,19 @@ def write_points_table_to_png(
     fig = go.Figure(
         data=[
             go.Table(
-                columnwidth=[30, 150, 130, 160, 160, 160],
+                columnwidth=[30, 145, 90, 175, 175, 175],
                 header=dict(
                     values=headers,
                     fill_color="paleturquoise",
                     align="center",
-                    font_size=18,
+                    font_size=19,
                     height=33,
                 ),
                 cells=dict(
                     values=df.transpose().values.tolist(),
                     fill_color="lavender",
                     align="center",
-                    font_size=22,
+                    font_size=19,
                     height=33,
                 ),
             )

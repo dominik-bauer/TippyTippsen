@@ -1,13 +1,10 @@
-FROM golang:1.19.2-bullseye
+FROM python:3.10-slim
+ENV TZ="Europe/Berlin"
 WORKDIR /usr/app/src
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    && rm -rf /var/lib/apt/lists/* 
 COPY *.py ./
+COPY threema_* ./
 COPY requirements.txt ./
+RUN apt-get update && apt-get install -y \
+    vim 
 RUN pip install -r requirements.txt
-RUN go install github.com/karalabe/go-threema/cmd/threema@latest 
-
-
-CMD [ "python3", "./main.py"]
+CMD [ "python3.10", "./main.py"]

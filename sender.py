@@ -1,12 +1,19 @@
 """ Contains the logic behind sending threema messages"""
+import os
+import sys
 import dotenv
 import requests
 from subprocess import run, CompletedProcess
 from exceptions import ThreemaError
-import os
 
 dotenv.load_dotenv()
-THREEMA_EXECUTABLE = "threema"
+
+if sys.platform.startswith("win"):
+    THREEMA_EXECUTABLE = "threema_windows.exe"
+elif sys.platform.startswith("linux"):
+    THREEMA_EXECUTABLE = "./threema_linux"
+else:
+    raise OSError(f"Platform not supported: {sys.platform}")
 
 
 def build_threema_command_str(
@@ -29,7 +36,10 @@ def build_threema_command_str(
 
 
 def send_message(
-    threema_id: str, threema_public_key: str, msg: str = "", img_path: str = ""
+    threema_id: str,
+    threema_public_key: str,
+    msg: str = "",
+    img_path: str = "",
 ):
 
     # todo add 4x data validation!
@@ -57,6 +67,7 @@ def send_message(
         threema_id, threema_public_key, msg, img_path
     )
 
+    print(str_cmd)
     proc: CompletedProcess = run(str_cmd, shell=True, capture_output=True, text=True)
     outp: str = proc.stdout + proc.stderr
     # check for success:
