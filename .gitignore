@@ -2,8 +2,8 @@
 *sandbox*
 *.png
 *.jpg
+*.bat
 *.bmp
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
