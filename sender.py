@@ -3,6 +3,7 @@ import os
 import sys
 import dotenv
 import requests
+import time
 from subprocess import run, CompletedProcess
 from exceptions import ThreemaError
 
@@ -40,6 +41,8 @@ def send_message(
     threema_public_key: str,
     msg: str = "",
     img_path: str = "",
+    retrys: int = 5,
+    retry_after_seconds: int = 15,
 ):
 
     # todo add 4x data validation!
@@ -67,14 +70,20 @@ def send_message(
         threema_id, threema_public_key, msg, img_path
     )
 
-    print(str_cmd)
-    proc: CompletedProcess = run(str_cmd, shell=True, capture_output=True, text=True)
-    outp: str = proc.stdout + proc.stderr
-    # check for success:
-    # sometimes it's in stderr, because of the "No handler
-    # for connection termination" error message
-    if "Message sent" not in outp:
-        raise ThreemaError(f"Message not sent:\n{outp}")
+    # retry five times
+    for i in range(retrys):
+        proc: CompletedProcess = run(
+            str_cmd, shell=True, capture_output=True, text=True
+        )
+        outp: str = proc.stdout + proc.stderr
+        # check for success:
+        # sometimes it's in stderr, because of the "No handler
+        # for connection termination" error message
+        if "Message sent" in outp:
+            return
+        time.sleep(retry_after_seconds)
+
+    raise ThreemaError(f"After {i} retrys the message could not be sent:\n{outp}")
 
 
 def is_threema_executable_available():
