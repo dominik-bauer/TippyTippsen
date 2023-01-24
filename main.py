@@ -3,6 +3,13 @@ from time import sleep
 from game import RankingState, build_players, Matches, generate_ranking
 from renderer import write_points_table_to_png
 from logger import logme
+import traceback
+import humanize
+
+
+def sleepc(seconds: int):
+    logme(f"I will now wait for {humanize.precisedelta(seconds, format='%0.0f')}.")
+    sleep(seconds)
 
 
 def wait_days_until_time(days: int, hh: int, mm: int):
@@ -15,8 +22,14 @@ def wait_days_until_time(days: int, hh: int, mm: int):
     time_target = datetime(
         time_now.year, time_now.month, time_now.day, hh, mm, 0
     ) + timedelta(days=days)
+
+    # avoid negative deltas, also makes no sense to wait then
+    if time_target < time_now:
+        return
+
     timediff = time_target - time_now
-    sleep(timediff.total_seconds())
+
+    sleepc(timediff.total_seconds())
 
 
 def run():
@@ -30,21 +43,23 @@ def run():
     # times from sportschau are all UTC
     # all times are utc!
     while True:
-        logme("___STARTING NEW DAY___")
+        logme("Starting a new day!")
         today = datetime.utcnow()
 
         # get all matches for bl1/bl2/b3 for season 22/23
+        logme("Scraping sportschau.de for todays or upcoming matches.")
         matches.update_matches()
 
         # check if there are matches scheduled
         if not matches.are_scheduled(today):
-            logme("There are no matches today. Wait until next day.")
+            logme("There are no matches scheduled for today.")
             # players.send(witz)
             wait_days_until_time(days=1, hh=12, mm=0)  # utc
             continue  # start over
 
         # up to here there are matches happening today
         # loop and update until all matches are finished
+        logme("Found matches scheduled for today!")
         n = 0
         while not matches.are_finished(today):
 
@@ -52,28 +67,30 @@ def run():
             if n == 0:
                 dt_diff = matches.end_estimated(today) - datetime.utcnow()
                 waiting_seconds = dt_diff.total_seconds()
+
+                str_time_finish = matches.end_estimated(today).strftime("%H:%M")
                 logme(
-                    f"There are matches today. Waiting {waiting_seconds}s for them to end"
+                    f"I'm estimating that all matches are finished around: {str_time_finish}"
                 )
-                sleep(waiting_seconds)
+
+                sleepc(waiting_seconds)
                 n = 1
 
             else:
-                logme("waiting two minutes for matches to finish")
-                sleep(2 * 60)
+                # after that keep scraping every few min
+                logme("Todays matches are almost finished.")
+                sleepc(30)
 
-            # after that keep scraping every few min
             matches.update_matches()
 
-        logme("There are matches today. All are finished.")
+        logme("Todays matches are all finished.")
         ##############################################
         # up to here all matches of today are finished
 
-        # wait 5 minutes so that the rankings are hopefully updated
-        logme("Waiting a few minutes for bundesliga tabellen to update")
-        sleep(1 * 60)
+        logme("Waiting a few seconds to be sure that sportschau.de is up-to-date.")
+        sleep(60)
 
-        logme("Fetching data and sending overview to all")
+        logme("Fetching data and sending the overview to all players.")
         # get fresh bundesliga tables
         todays_rankingstate = RankingState()
 
@@ -96,10 +113,15 @@ def run():
             f"sportschau.de, {todays_rankingstate.date:%d.%m.%Y %H:%M}", fn
         )
 
-        logme("End for Today. Wait until next day...")
+        logme("Alle Übersichten wurden versendet.")
         wait_days_until_time(days=1, hh=12, mm=0)  # utc
 
 
 if __name__ == "__main__":
-
-    run()
+    try:
+        run()
+    except Exception as e:
+        logme(str(e))
+        logme(traceback.format_exc())
+        logme("Tippy Tippsen will now stop working. Bye...")
+        raise
