@@ -9,7 +9,7 @@ import humanize
 
 def sleepc(seconds: int):
     logme(f"I will now wait for {humanize.precisedelta(seconds, format='%0.0f')}.")
-    sleep(seconds)
+    sleep(float(seconds))
 
 
 def wait_days_until_time(days: int, hh: int, mm: int):
@@ -29,7 +29,7 @@ def wait_days_until_time(days: int, hh: int, mm: int):
 
     timediff = time_target - time_now
 
-    sleepc(timediff.total_seconds())
+    sleepc(int(timediff.total_seconds()))
 
 
 def run():
@@ -73,7 +73,7 @@ def run():
                     f"I'm estimating that all matches are finished around: {str_time_finish}"
                 )
 
-                sleepc(waiting_seconds)
+                sleepc(int(waiting_seconds))
                 n = 1
 
             else:
@@ -88,7 +88,7 @@ def run():
         # up to here all matches of today are finished
 
         logme("Waiting a few seconds to be sure that sportschau.de is up-to-date.")
-        sleep(60)
+        sleepc(60)
 
         logme("Fetching data and sending the overview to all players.")
         # get fresh bundesliga tables
@@ -107,7 +107,7 @@ def run():
 
         # send png to all players
         players.threema_send(
-            "Hallo %name%! Ich hoffe dein Tag war so gut wie der neue Punktestand:", ""
+            "Hallo %name%! Ich bin zurück! Wuff Wuff was macht der Punktestand?", ""
         )
         players.threema_send(
             f"sportschau.de, {todays_rankingstate.date:%d.%m.%Y %H:%M}", fn
