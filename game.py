@@ -21,7 +21,7 @@ class RankingState:
     """
 
     date: datetime = field(init=False)
-    ranks: dict[str, int] = field(init=False)
+    ranks: dict[int, int] = field(init=False)
 
     def __post_init__(self):
         self.update_ranking()
@@ -57,7 +57,7 @@ class Player:
     send_limit_time: timedelta = timedelta(hours=2)
     send_log: list[datetime] = field(default_factory=lambda: [])
 
-    points: tuple[int] = field(init=False)
+    points: list[int] = field(init=False)
     points_date: datetime = field(init=False)
 
     def update_points(self, state: RankingState):
@@ -67,23 +67,22 @@ class Player:
         betting game
         """
 
-        points = list()
+        points_tmp: list[int] = []
         rank_tipp: int
         teamname: int
         rank_ref: int
-        diff: int
+        rank_diff: int
 
         # loop the players tipps
         for rank_tipp, teamname in enumerate(self.tipps):
             rank_ref = state.ranks[teamname]
-            diff = abs(rank_tipp - rank_ref)
-            points.append(get_points(diff))
+            rank_diff = abs(rank_tipp - rank_ref)
+            points_tmp.append(get_points(rank_diff))
 
-        self.points = tuple(points)
+        self.points = points_tmp[:]
         self.points_date = state.date
 
     def send_threema(self, message: str, image_path: str):
-
         dt_limit: datetime = datetime.utcnow() - self.send_limit_time
         last_sends: list[datetime] = [dt for dt in self.send_log if dt > dt_limit]
         if len(last_sends) > self.send_limit:
@@ -169,7 +168,7 @@ class Matches:
         self.last_update = datetime.utcnow()
         self.matches = tmp_matches
 
-    def get_matches(self, target_date: datetime) -> list[Match]:
+    def get_matches(self, target_date: datetime | None) -> list[Match]:
         """
         Returns a list of all matches. If target_date is specified it
         will do that only for the matches that happend on that day
@@ -179,11 +178,11 @@ class Matches:
         else:
             return [m for m in self.matches if m.start.date() == target_date.date()]
 
-    def are_scheduled(self, target_date: datetime = None) -> bool:
+    def are_scheduled(self, target_date: datetime | None = None) -> bool:
         matches_to_check = self.get_matches(target_date)
         return bool(matches_to_check)
 
-    def are_finished(self, target_date: datetime = None) -> bool:
+    def are_finished(self, target_date: datetime | None = None) -> bool:
         """
         Check if all self.matches are finished. If target_date is
         specified it will do that only for the matches that happen on that day
@@ -191,7 +190,7 @@ class Matches:
         matches_to_check = self.get_matches(target_date)
         return all([m.is_finished for m in matches_to_check])
 
-    def end_estimated(self, target_date: datetime = None) -> datetime:
+    def end_estimated(self, target_date: datetime | None = None) -> datetime:
         """
         Returns a datetime that estimates when all self.matches are presumably
         finished. If target_date is specified it will do that only for the
@@ -203,7 +202,6 @@ class Matches:
 
 
 def build_players() -> Players:
-
     player_list: list[Player] = []
 
     for i in range(1, 6):
@@ -218,17 +216,18 @@ def build_players() -> Players:
     return Players(player_list)
 
 
-def split_bl123_table_back(l: list) -> tuple[list, list, list]:
-    return l[:18], l[18:36], l[36:]
+def split_bl123_table_back(input_list: list) -> list[list]:
+    return [input_list[:18], input_list[18:36], input_list[36:]]
 
 
 def get_points(rank_difference: int) -> int:
-    # fmt: off
-    if rank_difference == 0:  return 3
-    if rank_difference == 1:  return 2
-    if rank_difference == 2:  return 1
+    if rank_difference == 0:
+        return 3
+    if rank_difference == 1:
+        return 2
+    if rank_difference == 2:
+        return 1
     return 0
-    # fmt: on
 
 
 def generate_ranking(players: Players) -> pd.DataFrame:
@@ -243,7 +242,6 @@ def generate_ranking(players: Players) -> pd.DataFrame:
     rows = []
 
     for player in players.players:
-
         bl1, bl2, bl3 = split_bl123_table_back(player.points)
         p1, p2, p3 = sum(bl1), sum(bl2), sum(bl3)
         pt = p1 + p2 + p3
