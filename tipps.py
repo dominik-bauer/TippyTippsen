@@ -1,7 +1,6 @@
 import enum
-import scraper
 import difflib
-from pprint import pprint
+
 
 # had to migrate from openligadb to
 # scraping sportschau.de
@@ -67,7 +66,7 @@ class TEAMS(enum.Enum):
     BAYREUTH = 2953
 
 
-TIPPS: dict[str, tuple[TEAMS]] = {
+TIPPS: dict[str, tuple[TEAMS, ...]] = {
     "P4": (
         TEAMS.LEIPZIG,
         TEAMS.BAYERN_MÜNCHEN,
@@ -362,7 +361,7 @@ TIPPS: dict[str, tuple[TEAMS]] = {
 
 
 def map_enum_to_list_items(
-    enumeration: enum.Enum, anylist: list[str]
+    enumeration: enum.EnumMeta, anylist: list[str]
 ) -> dict[str, int]:
     """
     Accepts an enum, and tries to match (1:1) every enum to one of the strings
@@ -370,7 +369,8 @@ def map_enum_to_list_items(
     """
     if len(enumeration) != len(anylist):
         raise ValueError(
-            f"Enumeration ({len(enumeration)}) and list ({list(anylist)}) must be of same length!"
+            f"Enumeration ({len(enumeration)}) and list ({list(anylist)})"
+            " must be of same length!"
         )
 
     skip_enums = []
