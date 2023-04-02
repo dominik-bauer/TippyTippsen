@@ -8,12 +8,15 @@ def get_random_joke() -> str:
     return ""
 
 
-def remove_newlines(s: str) -> str:
+def remove_newlines(input_string: str) -> str:
+    s = input_string[:]
     s.replace("\n", " ")
     while "  " in s:
-        s = s.replace("  ", " ")
+        s.replace("  ", " ")
+    return s
 
 
-joke = get_random_joke()
-print(joke)
-print(remove_newlines(joke))
+if __name__ == "__main__":
+    joke = get_random_joke()
+    print(joke)
+    print(remove_newlines(joke))
