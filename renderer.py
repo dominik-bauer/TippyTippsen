@@ -3,11 +3,9 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.io as pio
 
-from game import build_players
-
 
 def write_points_table_to_png(
-    df: pd.DataFrame, filename: str, headers: list[str] = None
+    df: pd.DataFrame, filename: str, headers: list[str] | None = None
 ):
 
     if headers is None:
@@ -46,4 +44,11 @@ def write_points_table_to_png(
         ],
         layout=layout,
     )
-    pio.write_image(fig, file=filename, format="png", scale=2, width=700, height=202)
+    pio.write_image(
+        fig,
+        file=filename,
+        format="png",
+        scale=2,
+        width=700,
+        height=202,
+    )
