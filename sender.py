@@ -23,15 +23,30 @@ def build_threema_command_str(
 
     # message only
     if msg and not img_path:
-        return f"""{THREEMA_EXECUTABLE} send text --to {threema_id} --to.pubkey {threema_public_key} --msg "{msg}" """
+        return (
+            f"{THREEMA_EXECUTABLE} send text"
+            + f" --to {threema_id}"
+            + f" --to.pubkey {threema_public_key}"
+            + f' --msg "{msg}" '
+        )
 
     # image only
     if not msg and img_path:
-        return f"""{THREEMA_EXECUTABLE} send image --to {threema_id} --to.pubkey {threema_public_key} --img {img_path}"""
+        return (
+            f"{THREEMA_EXECUTABLE} send image"
+            + f" --to {threema_id}"
+            + f" --to.pubkey {threema_public_key}"
+            + f" --img {img_path}"
+        )
 
     # image and message
     if msg and img_path:
-        return f"""{THREEMA_EXECUTABLE} send image --to {threema_id} --to.pubkey {threema_public_key} --img {img_path} --msg "{msg}" """
+        return (
+            f"{THREEMA_EXECUTABLE} send image"
+            + f" --to {threema_id}"
+            + f" --to.pubkey {threema_public_key}"
+            + f' --img {img_path} --msg "{msg}" '
+        )
 
     raise ThreemaError("Specify a message, an image or specify both.")
 
@@ -64,12 +79,14 @@ def send_message(
     # check image path
     if img_path:
         if not os.path.exists(img_path):
-            raise ThreemaError("Did not find specified image: '{img_path}'")
+            raise ThreemaError(f"Did not find specified image: '{img_path}'")
 
     str_cmd: str = build_threema_command_str(
         threema_id, threema_public_key, msg, img_path
     )
 
+    i = 0
+    outp = ""
     # retry five times
     for i in range(retrys):
         proc: CompletedProcess = run(
@@ -104,7 +121,7 @@ def is_threema_executable_available():
     return False
 
 
-def get_threema_public_key(threema_id: str) -> str:
+def get_threema_public_key(threema_id: str) -> str | None:
     """
     Retrieves public key for any threema user id
     """
@@ -112,4 +129,5 @@ def get_threema_public_key(threema_id: str) -> str:
 
     if x.status_code == 200:
         return x.json()["publicKey"]
+
     return None
