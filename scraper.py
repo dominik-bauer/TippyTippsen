@@ -1,7 +1,7 @@
 """
 Provides methods to scrape match data and rankings from sportschau.de
 """
-
+import os
 import bs4
 import requests
 from exceptions import ScrapingError
@@ -16,37 +16,40 @@ def scrape_matches() -> list[tuple[datetime, bool]]:
     contains the combined matches of 1., 2. and 3. Bundesliga
     """
 
-    urls = [
-        "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-bundesliga",
-        "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-2-bundesliga",
-        "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-3-liga",
-    ]
-
     all_matches = []
-    for url in urls:
+    for bl in [1, 2, 3]:
+
+        url = os.environ[f"URL_MATCHES_BL{bl}"]
 
         # retrieve html code and load into bs4
         soup = bs4.BeautifulSoup(requests.get(url).text, "html.parser")
 
         # loop through all div elements (which are basically all elements)
-        for n, div in enumerate(soup.find_all("div")):
+        for n, div in enumerate(soup.find_all("li")):
+
+            names_attributes = list(div.attrs.keys())
 
             # all div elements with position attribute, which is a match
-            if has_attribute(div, "position", ""):
+            if len(names_attributes) < 10:
+                continue
+            if all(
+                ["datetime".lower() not in name.lower() for name in names_attributes]
+            ):
+                continue
 
-                # derive if it is finished
-                stati = div.find_all("div", {"class": "match-status"})
-                if len(stati) != 1:
-                    raise ScrapingError("More than one match-status found")
-                is_finished: bool = stati[0].text.lower() == "beendet"
+            # derive if it is finished
+            stati = div.find_all("div", {"class": "match-status"})
+            if len(stati) != 1:
+                raise ScrapingError("More than one match-status found")
+            is_finished: bool = stati[0].text.lower() == "beendet"
 
-                # derive start time, it is retrieved as UTC
-                start_time: str = div["data-datetime"]
-                start_datetime: datetime = datetime.strptime(
-                    start_time, "%Y-%m-%dT%H:%M:%SZ"
-                )
+            # derive start time, it is retrieved as UTC
+            start_time: str = div["data-datetime"]
+            start_datetime: datetime = datetime.strptime(
+                start_time, "%Y-%m-%dT%H:%M:%SZ"
+            )
 
-                all_matches.append((start_datetime, is_finished))
+            all_matches.append((start_datetime, is_finished))
     return all_matches
 
 
@@ -73,15 +76,9 @@ def scrape_sportschau_ranking() -> list[str]:
     of 1. Bundesliga, 2. Bundesliga and 3. Bundesliga
     """
 
-    urls = [
-        "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-bundesliga/tabelle",
-        "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-2-bundesliga/tabelle",
-        "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-3-liga/tabelle",
-    ]
-
     ranks = []
-
-    for url in urls:
+    for bl in [1, 2, 3]:
+        url = os.environ[f"URL_TABLES_BL{bl}"]
 
         # retrieve html code and load into bs4
         soup = bs4.BeautifulSoup(requests.get(url).text, "html.parser")
