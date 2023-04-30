@@ -2,7 +2,7 @@
 A Threema bot that sends the ranking of a Bundesliga betting game to all players.
 
 ### Rationale
-This is a fun project to learn new stuff, especiall CI/CD.
+This is a fun project to learn new stuff, especially CI/CD.
 
 #### The Betting Game
 In this private betting game, 5 players are guessing each, how the final ranking tables of the first three german soccer leagues will look like after the current season 22/23. Those leagues are 1. Bundesliga, 2. Bundesliga and 3. Bundesliga. The player with the best guess wins. The best guess is determined by a simple points system:
